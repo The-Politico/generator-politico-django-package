@@ -1,0 +1,7 @@
+{
+  "extends": "airbnb",
+  "root": true,
+  "rules": {
+    "class-methods-use-this": 0
+  }
+}

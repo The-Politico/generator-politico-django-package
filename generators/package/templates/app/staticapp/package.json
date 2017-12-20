@@ -1,0 +1,40 @@
+{
+  "name": "<%= app %>-staticapp",
+  "version": "1.0.0",
+  "description": "Static assets for <%= app %>, a Django app at Politico.",
+  "main": "./src/js/main-app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "latest",
+    "babel-core": "latest",
+    "babel-eslint": "latest",
+    "babel-loader": "latest",
+    "babel-preset-env": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "latest",
+    "express": "latest",
+    "express-http-proxy": "latest",
+    "extract-text-webpack-plugin": "latest",
+    "fs-extra": "latest",
+    "glob": "latest",
+    "gulp": "latest",
+    "lodash": "latest",
+    "node-sass": "latest",
+    "open": "latest",
+    "optimize-css-assets-webpack-plugin": "latest",
+    "postcss-loader": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "sass-loader": "latest",
+    "style-loader": "latest",
+    "webpack": "latest",
+    "webpack-dev-middleware": "latest",
+    "webpack-hot-middleware": "latest",
+    "webpack-stream": "latest",
+    "yargs": "latest"
+  }
+}
