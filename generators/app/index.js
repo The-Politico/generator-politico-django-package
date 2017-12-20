@@ -9,7 +9,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'package',
       default: () => {
-        const dir = path.basename(path.resolve(process.cwd(), '..'));
+        const dir = path.basename(process.cwd());
         return dir.includes('django-') ? dir : `django-${dir}`;
       },
       filter: answer => S(answer).slugify().s,
