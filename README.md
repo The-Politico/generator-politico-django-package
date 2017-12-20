@@ -17,3 +17,14 @@ $ mkdir new-project
 $ cd new-project
 $ yo politico-django-package
 ```
+
+### Features
+
+POLITICO pluggable Django apps come with:
+
+- a node-based static files build system
+- utilities for publishing to AWS S3
+- authentication for views and AJAX requests
+- a settings conf for pluggable apps
+- pre-fab directories for Django Rest Framework and Celery
+- a built-in, preconfigured example project
