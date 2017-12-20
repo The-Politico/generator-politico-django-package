@@ -110,9 +110,6 @@ module.exports = class extends Generator {
       this.templatePath('app/staticapp/src/scss/main.scss'),
       this.destinationPath(`${app}/staticapp/src/scss/main.scss`));
     this.fs.copy(
-      this.templatePath('app/staticapp/babelrc'),
-      this.destinationPath(`${app}/staticapp/.babelrc`));
-    this.fs.copy(
       this.templatePath('app/staticapp/gitignore'),
       this.destinationPath(`${app}/staticapp/.gitignore`));
     this.fs.copy(
