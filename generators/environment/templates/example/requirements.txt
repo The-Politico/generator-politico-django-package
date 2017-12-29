@@ -1,7 +1,0 @@
-pytest
-flake8
-django
-djangorestframework
-dj-database-url
-psycopg2
--e ../

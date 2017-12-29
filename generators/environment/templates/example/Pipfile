@@ -14,6 +14,8 @@ pytest = "*"
 "flake8" = "*"
 django = ">=2.0"
 djangorestframework = "*"
+"dj-database-url" = "*"
+"psycopg2" = "*"
 "<%= app %>" = {path = "./..", editable = true}
 
 

@@ -24,6 +24,8 @@ To start developing, use the shortcut make command:
 $ make dev
 ```
 
+More information will be in the project's README file.
+
 ### Features
 
 POLITICO pluggable Django apps come with:

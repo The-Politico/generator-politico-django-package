@@ -40,7 +40,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.log(chalk.cyan('Silently installing dependencies...'));
+    this.log(chalk.cyan('Installing dependencies...'));
   }
   end() {
     this.log(chalk.cyan('Done and ready to go! 🏁'));
