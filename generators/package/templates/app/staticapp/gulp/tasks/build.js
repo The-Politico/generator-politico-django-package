@@ -1,9 +1,10 @@
 const gulp = require('gulp');
 const webpack = require('webpack');
-const prodConfig = require('../../webpack-prod.config.js');
 const webpackStream = require('webpack-stream');
+const prodConfig = require('../../webpack-prod.config.js');
 
-module.exports = (cb) =>
+
+module.exports = () =>
   gulp.src('src/js/main.js')
     .pipe(webpackStream(prodConfig, webpack))
     .pipe(gulp.dest('./../static/<%= app %>/'))

@@ -1,6 +1,5 @@
 const Generator = require('yeoman-generator');
 const shell = require('shelljs');
-const chalk = require('chalk');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -23,9 +22,9 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('example/manage.py'),
       this.destinationPath('example/manage.py'));
-    this.fs.copy(
-      this.templatePath('example/requirements.txt'),
-      this.destinationPath('example/requirements.txt'));
+    this.fs.copyTpl(
+      this.templatePath('example/Pipfile'),
+      this.destinationPath('example/Pipfile'), { app });
 
     this.fs.copy(
       this.templatePath('example/exampleapp/__init__.py'),
@@ -42,13 +41,9 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.log(chalk.cyan('Silently installing dependencies. Give it a few...'));
-    shell.exec('virtualenv venv -p python3', {
+    shell.exec('pipenv install', {
       cwd: 'example/',
       silent: true,
     });
-  }
-  end() {
-    this.log(chalk.cyan('Done and ready to go! 🏁'));
   }
 };

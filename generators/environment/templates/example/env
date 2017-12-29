@@ -1,2 +1,1 @@
-source venv/bin/activate
-pip install -q -r requirements.txt
+PIPENV_VENV_IN_PROJECT=True

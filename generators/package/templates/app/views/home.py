@@ -1,5 +1,5 @@
-from <%=app%>.authentication import secure
 from <%=app%>.conf import settings as app_settings
+from <%=app%>.utils.auth import secure
 from django.views.generic import TemplateView
 
 

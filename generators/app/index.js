@@ -3,6 +3,7 @@ const S = require('string');
 const chalk = require('chalk');
 const path = require('path');
 
+
 module.exports = class extends Generator {
   prompting() {
     const questions = [{
@@ -32,9 +33,17 @@ module.exports = class extends Generator {
   compose() {
     const name = this.package;
     const app = this.app;
-    this.composeWith('politico-python-package:docs', { name });
-    this.composeWith('politico-python-package:packaging', { name });
+    this.composeWith(require.resolve('../docs'), { name });
     this.composeWith(require.resolve('../environment'), { app });
     this.composeWith(require.resolve('../package'), { app });
+    this.composeWith(require.resolve('../packaging'), { name, app });
+  }
+
+  install() {
+    this.log(chalk.cyan('Silently installing dependencies...'));
+  }
+  end() {
+    this.log(chalk.cyan('Done and ready to go! 🏁'));
+    this.log(chalk.cyan('Start developing: $ make dev'));
   }
 };

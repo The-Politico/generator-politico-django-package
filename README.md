@@ -7,7 +7,7 @@
 Install the package and dependencies.
 
 ```
-$ npm install -g gulp-cli yo generator-politico-python-package generator-politico-django-package
+$ npm install -g gulp-cli yo generator-politico-django-package
 ```
 
 Use it in a new directory.
@@ -16,6 +16,12 @@ Use it in a new directory.
 $ mkdir new-project
 $ cd new-project
 $ yo politico-django-package
+```
+
+To start developing, use the shortcut make command:
+
+```
+$ make dev
 ```
 
 ### Features
@@ -27,3 +33,4 @@ POLITICO pluggable Django apps come with:
 - a settings conf for pluggable apps
 - pre-made structure for Django Rest Framework and Celery
 - a built-in, preconfigured example project
+- manages development environment with [pipenv](https://docs.pipenv.org/)

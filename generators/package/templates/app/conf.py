@@ -1,6 +1,6 @@
 """
-Use this file to configure app settings and resolve defaults with any
-overrides set in project settings.
+Use this file to configure pluggable app settings and resolve defaults
+with any overrides set in project settings.
 """
 
 from django.conf import settings as project_settings
@@ -38,5 +38,6 @@ Settings.CLOUDFRONT_ALTERNATE_DOMAIN = getattr(
 
 Settings.S3_UPLOAD_ROOT = getattr(
     project_settings, '<%= allcaps %>_S3_UPLOAD_ROOT', 'uploads/<%= app %>')
+
 
 settings = Settings
