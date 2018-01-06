@@ -35,7 +35,7 @@ module.exports = class extends Generator {
     const app = this.app;
     this.composeWith(require.resolve('../docs'), { name });
     this.composeWith(require.resolve('../environment'), { app });
-    this.composeWith(require.resolve('../package'), { app });
+    this.composeWith(require.resolve('../package'), { name, app });
     this.composeWith(require.resolve('../packaging'), { name, app });
   }
 

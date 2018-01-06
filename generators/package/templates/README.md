@@ -1,13 +1,13 @@
 ![POLITICO](https://rawgithub.com/The-Politico/src/master/images/logo/badge.png)
 
-# <%= app %>
+# <%= name %>
 
 ### Quickstart
 
 1. Install the app.
 
   ```
-  $ pip install <%= app %>
+  $ pip install <%= name %>
   ```
 
 2. Add the app to your Django project and configure settings.

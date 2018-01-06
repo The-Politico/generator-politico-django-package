@@ -7,6 +7,12 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
+    this.option('name', {
+      type: String,
+      required: true,
+      desc: 'Package name',
+    });
+
     this.option('app', {
       type: String,
       required: true,
@@ -16,6 +22,7 @@ module.exports = class extends Generator {
 
   writing() {
     const app = this.options.app;
+    const name = this.options.name;
     const capital = S(app).capitalize().s;
     const allcaps = app.toUpperCase();
 
@@ -132,7 +139,7 @@ module.exports = class extends Generator {
       this.destinationPath(`${app}/urls.py`), { app });
     this.fs.copyTpl(
       this.templatePath('README.md'),
-      this.destinationPath('README.md'), { app, allcaps });
+      this.destinationPath('README.md'), { name, app, allcaps });
 
     mkdirp(`${app}/static/${app}/js`);
     mkdirp(`${app}/static/${app}/css`);
