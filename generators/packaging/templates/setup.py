@@ -22,11 +22,9 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
     ],
     keywords='',
-
     packages=find_packages(exclude=['docs', 'tests', 'example']),
-
+    include_package_data=True,
     install_requires=[],
-
     extras_require={
         'test': ['pytest'],
     },

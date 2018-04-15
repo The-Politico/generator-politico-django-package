@@ -33,6 +33,10 @@ module.exports = class extends Generator {
       this.destinationPath('Makefile'), { app });
 
     this.fs.copyTpl(
+      this.templatePath('MANIFEST.in'),
+      this.destinationPath('MANIFEST.in'), { app });
+
+    this.fs.copyTpl(
       this.templatePath('setup.py'),
       this.destinationPath('setup.py'),
       { name });
