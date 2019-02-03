@@ -39,7 +39,7 @@ const config = (env, argv, port) => ({
       //   ws: true,
       // },
     },
-    publicPath: '/static/<%= appName %>/',
+    publicPath: '/static/<%= app %>/',
   },
   module: {
     rules: [

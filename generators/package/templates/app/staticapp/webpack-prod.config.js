@@ -19,7 +19,7 @@ module.exports = {
     ]),
   ),
   output: {
-    path: path.resolve(__dirname, '../static/<%= appName %>'),
+    path: path.resolve(__dirname, '../static/<%= app %>'),
     filename: 'js/[name].js',
   },
   module: {
