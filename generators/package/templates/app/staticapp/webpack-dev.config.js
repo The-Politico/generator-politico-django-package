@@ -1,22 +1,45 @@
 const path = require('path');
-const webpack = require('webpack');
 const glob = require('glob');
 const _ = require('lodash');
+const portfinder = require('portfinder');
+const args = require('yargs').default('proxy', '8000').argv;
 
-module.exports = port => ({
+portfinder.basePort = 3000;
+
+const config = (env, argv, port) => ({
+  mode: 'development',
+  devtool: 'cheap-eval-source-map',
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx'],
   },
   entry: _.zipObject(
-    glob.sync('./src/js/main-*.js*').map(f => path.basename(f, path.extname(f))),
-    glob.sync('./src/js/main-*.js*').map(f => [
-      `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr&reload=true`,
+    glob.sync('./src/main.*.js*').map(f => path.basename(f, path.extname(f))),
+    glob.sync('./src/main.*.js*').map(f => [
+      '@babel/polyfill',
+      'whatwg-fetch',
       f,
     ]),
   ),
   output: {
-    path: '/',
+    path: path.resolve(__dirname, '../static/<%= app %>'),
     filename: 'js/[name].js',
+  },
+  devServer: {
+    compress: true,
+    port,
+    open: true,
+    contentBase: false,
+    proxy: {
+      '/': {
+        target: `http://localhost:${args.proxy}`,
+      },
+      // Uncomment if proxying websockets...
+      // '/ws': {
+      //   target: `ws://localhost:${argv.proxy}/`,
+      //   ws: true,
+      // },
+    },
+    publicPath: '/static/<%= appName %>/',
   },
   module: {
     rules: [
@@ -27,47 +50,56 @@ module.exports = port => ({
           loader: 'babel-loader',
           options: {
             presets: [
-              [
-                'env',
-                {
-                  targets: {
-                    browsers: ['last 2 versions'],
-                  },
-                  debug: true,
-                  modules: false,
+              ['@babel/env', {
+                targets: {
+                  browsers: 'last 2 versions',
                 },
-              ],
-              'react',
-              'stage-0',
-              'airbnb',
+              }],
+              '@babel/react',
+            ],
+            plugins: [
+              '@babel/proposal-class-properties',
             ],
           },
         },
       },
       {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader',
+        test: /theme.*\.s?css$/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
           },
-          {
-            loader: 'postcss-loader',
+        }, {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
           },
-          {
-            loader: 'sass-loader',
+        }],
+      }, {
+        test: /\.s?css$/,
+        exclude: /theme.*\.s?css$/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            sourceMap: true,
           },
-        ],
+        }, {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+          },
+        }],
       },
     ],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.ProvidePlugin({
-      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
-    }),
-  ],
-  stats: 'minimal',
-  devtool: 'cheap-module-eval-source-map',
-  watch: true,
 });
+
+module.exports = (env, argv) =>
+  portfinder.getPortPromise()
+    .then(port => config(env, argv, port));

@@ -41,39 +41,24 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('app/serializers/__init__.py'),
       this.destinationPath(`${app}/serializers/__init__.py`));
-    this.fs.copyTpl(
-      this.templatePath('app/staticapp/gulp/server/server.js'),
-      this.destinationPath(`${app}/staticapp/gulp/server/server.js`), { app });
-    this.fs.copyTpl(
-      this.templatePath('app/staticapp/gulp/tasks/build.js'),
-      this.destinationPath(`${app}/staticapp/gulp/tasks/build.js`), { app });
     this.fs.copy(
-      this.templatePath('app/staticapp/gulp/tasks/dev.js'),
-      this.destinationPath(`${app}/staticapp/gulp/tasks/dev.js`));
+      this.templatePath('app/staticapp/src/main.app.js'),
+      this.destinationPath(`${app}/staticapp/src/main.app.js`));
     this.fs.copy(
-      this.templatePath('app/staticapp/gulp/index.js'),
-      this.destinationPath(`${app}/staticapp/gulp/index.js`));
+      this.templatePath('app/staticapp/src/theme/base.scss'),
+      this.destinationPath(`${app}/staticapp/src/theme/base.scss`));
     this.fs.copy(
-      this.templatePath('app/staticapp/src/js/main-app.js'),
-      this.destinationPath(`${app}/staticapp/src/js/main-app.js`));
-    this.fs.copy(
-      this.templatePath('app/staticapp/src/scss/main.scss'),
-      this.destinationPath(`${app}/staticapp/src/scss/main.scss`));
+        this.templatePath('app/staticapp/eslintrc.json'),
+        this.destinationPath(`${app}/staticapp/.eslintrc.json`));
     this.fs.copy(
       this.templatePath('app/staticapp/gitignore'),
       this.destinationPath(`${app}/staticapp/.gitignore`));
-    this.fs.copy(
-      this.templatePath('app/staticapp/gulpfile.js'),
-      this.destinationPath(`${app}/staticapp/gulpfile.js`));
     this.fs.copyTpl(
       this.templatePath('app/staticapp/package.json'),
       this.destinationPath(`${app}/staticapp/package.json`), { app });
-    this.fs.copy(
-      this.templatePath('app/staticapp/postcss.config.js'),
-      this.destinationPath(`${app}/staticapp/postcss.config.js`));
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('app/staticapp/webpack-dev.config.js'),
-      this.destinationPath(`${app}/staticapp/webpack-dev.config.js`));
+      this.destinationPath(`${app}/staticapp/webpack-dev.config.js`), { app });
     this.fs.copyTpl(
       this.templatePath('app/staticapp/webpack-prod.config.js'),
       this.destinationPath(`${app}/staticapp/webpack-prod.config.js`), { app });
