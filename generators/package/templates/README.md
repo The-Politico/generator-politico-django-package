@@ -46,7 +46,7 @@ Developing static assets? Move into the pluggable app's staticapp directory and 
 
   ```
   $ cd <%= app %>/staticapp
-  $ gulp
+  $ npm start
   ```
 
 Want to not worry about it? Use the shortcut make command.

@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Static assets for <%= app %>, a Django app.",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js",
-    "build": "webpack --mode=production --config webpack.config.prod.js"
+    "start": "webpack-dev-server --config webpack-dev.config.js",
+    "build": "webpack --mode=production --config webpack-prod.config.js"
   },
   "dependencies": {
     "classnames": "*",
